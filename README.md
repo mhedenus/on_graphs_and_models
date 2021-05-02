@@ -11,6 +11,6 @@ With this essay I want to investigate this modelling styles.
 The conclusions are the foundation for a generalized view on graphs and modelling which in in turn
 is the basis for technical solutions that harmonize RDF and PGs. 
 
-## Alice And Bob
+## Alice and Bob
 
-![image1](image1.png "Image 1")
+<img src="image1.png" alt="Image1" width="50%"/>
