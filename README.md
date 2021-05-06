@@ -4,12 +4,11 @@
 ## Abstract
 
 This is an essay about graphs and and models.
-The main question is how to bring together [__Resource Description Framework (RDF)__](https://www.w3.org/RDF/) and __Property Graphs (PG)__.
-The bridge is not a technical thing like [__RDF*__](https://github.com/w3c/rdf-star).
-The main difference between RDF and PG lies deeper, in basic decisions how to do modeling.
+The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The bridge is not a technical thing like [__RDF*__](https://github.com/w3c/rdf-star). The main difference between RDF and Property Graph lies deeper in basic decisions how to do modeling.
 
-With this essay I want to investigate distinct modeling styles.
-The conclusions are the foundation for a generalized view on graphs and modeling which in in turn is the basis for technical solutions that harmonize RDF and PGs. 
+With this essay I want to investigate modeling styles and how they are based on different graph styles.
+
+The conclusion are the foundation for a generalized view on graphs and modeling which in in turn is the basis for technical solutions that harmonize RDF and PGs. 
 
 ## Making a Model
 
@@ -34,7 +33,7 @@ When we gossip about Alice and Bob it might also be of interest that Bob is a ta
 The new model is more abstract than the first. Can we continue with this abstracting process? If we look closely at the second image we see that the model consists of specific _elements_: There are bubbles, an arrow and words. The bubbles and the arrow are very different . 
 Without knowing it we have already made a design decision: we are distinguishing between things and their relationship. Things are represented by bubbles and relationships are represented by arrows. To be able to recognize who we are talking about we use the individuals' names.
 The bubbles represent things which are _identified_ by a name.
-Also the relationship is identified by the word 'likes'.
+Also the relationship is identified by a word 'likes'.
 
 So far everything seemed to be very natural. If we develop our model further we have to we make more design decisions. This is a crucial point because the next steps are not mandatory, but each step is a decision.
 
@@ -80,16 +79,15 @@ Transferring this argumentation to the model image the tags become a special kin
 
 Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations or not.__
 
-Both solutions have their advantages and disadvantages. The property-in-the-bubble solution is simpler in the sense that there only two bubbles but the bubbles have an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
+Both solutions have their advantages and disadvantages. The property-in-the-bubble solution is simpler in the sense that there only two bubbles but the bubbles then show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
 
 
 ### Epistemic Structure
 
 The next example shall demonstrate that the Property Dichotomy conceptual issue and has nothing to do whether something is drawn as a box or an oval.
+Let's continue with the story about Alice and Bob. Both work as scientists. In fact, they met each other in the cryptography lab. We now add this information to the models.
 
-Alice and Bob both work as scientists. In fact, they meet each other in the cryptography laboratory. Let's add this information to the models.
-
-For the first variant we have to make a decision. Is 'employed as' a relation or a property? You can argue for both by saying that an employment is something that change during your career and that it is something that depends on external circumstances, or to say that is something that defines a person's status and its role in society. Another viewpoint is about the importance of this information is. Is the employment information of interest or is it supplementary?  Well, let's just _decide_ that is a property. We introduce the property `<employed as>` and assign it to the concept of a `<Scientist>`.
+For the first variant we have to make a decision. Is 'employed as' a relation or a property? You can argue for both by saying that an employment is something that changes during your career and that it is something that depends on external circumstances, or by saying that is something that defines a person's status and its role in society. Another viewpoint is about the importance of this information is. Is the employment information of interest or is it supplementary?  Well, let's just _decide_ that is a property. We introduce the property `<employed as>` and assign it to the concept of a `<Scientist>`.
 
 <figure>
 <img src="image7.png" alt="Image 7" width="60%"/>
@@ -103,7 +101,7 @@ For the atomic graph there is nothing to decide. It is immediately clear how it 
 <figcaption>Image 8.</figcaption>
 </figure>
 
-The results are very different. In the property-relation-model the bubbles have become thicker. We can recognize that there is a equivalence of the bubbles with respect to `<employed as>`. But we still see what it was all about from the beginning, that it was people. The model shows an epistemic structure. 
+The results are very different. In the property-relation-model the bubbles have become thicker. We can recognize that there is a equivalence of the bubbles with respect to `<employed as>`. But we still see what it is about: persons. The model shows an epistemic structure. 
 
 On the other hand the atomic graph increased considerably. It immediately shows you that there is a connection between Alice and Bob via their jobs as scientists. Although  this information is secondary it is as prominent as everything else. Within the atomic model everything has the same importance, it is a democratic network of things without any obvious epistemic structure. 
 
@@ -140,26 +138,32 @@ This implies that the difference of a property and an attribute is due the sourc
 
 
 
+
 ### Atomic Graph
 
-The graph style that applies the property-outside-the-bubble solution of the Property Dichotomy has no common name. Because the nodes (and edges) of this graph have no internal structure I believe the name __Atomic Graph__ is suitable.
+The graph style that applies the property-outside-of-the-bubble solution of the Property Dichotomy has no common name. Because the nodes (and edges) of this graph have no internal structure I believe the name __Atomic Graph (AG)__ is suitable.
+
+The most important (and maybe the sole) application of the AG style is [__Resource Description Framework (RDF)__](https://www.w3.org/RDF/). One of the great ideas of RDF is that the graph can be decomposed into molecules which in turn are decomposed into the three atoms 'subject','object' and 'predicate'. 
+The 'predicate' is an URI which denotes a 'property' which is the same as a 'binary relation' ([RDF Primer](https://www.w3.org/TR/rdf11-concepts/#resources-and-statements)). 
+
+To understand why RDF was designed this way it's worth looking at its history. In a very early [working draft from 1997](https://www.w3.org/TR/WD-rdf-syntax-971002/) you read:
 
 
+> RDF is a foundation for processing metadata; it provides interoperability between
+> applications that exchange machine-understandable information on the Web.
+> ... At the core of RDF is a model for representing named properties and their values.
+>These properties serve both to represent attributes of resources
+>... and to represent relationships between resources. 
 
-
-RDF has a history.
-
-
-
-
-Early design stages 
+ 
+The idea of RDF was to provide a way to attach properties to web resources. The focus was on properties, not on relationships. A relationship was regarded as a special kind of property when its value is an URI. RDF has gone a long way since its early days, but the claim was and still is to be something _fundamental_ - and fundamental things must be _simple_. With this approach the core model could be defined with only three propositions.
 
 
 
 ### Relations with Properties
 
 So far only bubbles had properties. Of course, properties can be attached to arrows. It is a widespread view that annotated edges is a special feature of PG.
-RDF also allows you to add predicates to statements by using the reification vocabulary. RDF* will provide will greatly simplify this task. This issue has been left out because it is the intention of this essay to show that difference of PG and AG is based solely on the Property Dichotomy.
+RDF also allows you to add predicates to statements by using the reification vocabulary. RDF* will greatly simplify this task. This issue has been left out because it is the intention of this essay to show that difference of PG and AG is based solely on the Property Dichotomy.
 
 
 
@@ -170,6 +174,16 @@ RDF also allows you to add predicates to statements by using the reification voc
 [Colin Atkinson, Matthias Gutheil and Kilian Kiko: _On the Relationship of Ontologies and Models_](https://cs.emis.de/LNI/Proceedings/Proceedings96/GI-Proceedings-96-3.pdf)
 
 
+```
+class Person
+{
+   Name name;
+   Employment employment;
+}
+```
+
+
+## Mapping Property Graph and Atomic Graph
 
 
 ### The Information Graph
