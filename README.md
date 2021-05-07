@@ -30,7 +30,7 @@ When we gossip about Alice and Bob it might also be of interest that Bob is a ta
 </figure>
  
 
-The new model is more abstract than the first. Can we continue with this abstracting process? If we look closely at the second image we see that the model consists of specific _elements_: There are bubbles, an arrow and words. The bubbles and the arrow are very different . 
+The new model is more abstract than the first. Can we continue with this abstracting process? If we look closely at the second image we see that the model consists of specific __elements__: There are bubbles, an arrow and words. The bubbles and the arrow are very different . 
 Without knowing it we have already made a design decision: we are distinguishing between things and their relationship. Things are represented by bubbles and relationships are represented by arrows. To be able to recognize who we are talking about we use the individuals' names.
 The bubbles represent things which are _identified_ by a name.
 Also the relationship is identified by a word 'likes'.
@@ -81,9 +81,9 @@ Transferring this argumentation to the model image the tags become a special kin
 <figcaption>Image 6.</figcaption>
 </figure>
 
-Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations or not.__
+Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations -- or not.__
 
-Both solutions have their advantages and disadvantages. The property-in-the-bubble solution is simpler in the sense that there only two bubbles but the bubbles then show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
+Both solutions have their advantages and disadvantages. On the one hand the property-in-the-bubble solution is simpler in the sense that there are only two bubbles, on the other hand the bubbles show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
 
 
 
