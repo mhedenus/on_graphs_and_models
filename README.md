@@ -19,7 +19,7 @@ The essay opens a generalized view on graphs and modeling which in in turn is th
 <figcaption>Image 1.</figcaption>
 </figure>
 
-Let's talk about Alice and Bob. Alice is very fond of Bob, but there feelings of Bob for her are unknown. We now draw a picture of this situation. What we have done is already a model. A __model__ is an image of something, a simplified image of reality or a concept.
+Let's talk about Alice and Bob. Alice likes Bob, but the feelings of Bob for her are unknown. We now draw a picture of this situation. What we have done is already a model. A __model__ is an image of something, a simplified image of reality or a concept.
 
 Our model has a concern: it is about persons and their relationship. There are things which are of interest and other things which are not considered here.
 When we gossip about Alice and Bob it might also be of interest that Bob is a tall, handsome man or that Alice has a new hairstyle. For the moment, we are ignoring all these facts. We can reduce our model so that it reflects only what we are talking about.
