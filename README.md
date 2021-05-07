@@ -208,7 +208,7 @@ We see the things of our model `ex:Alice` and `ex:Bob` in the graph pane on the 
 
 The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise:
 
-- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as objects are regared as relations.
+- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as objects are regarded as relations.
 
 - You can declare the behavior with a special vocabulary, e.g.:  
 
