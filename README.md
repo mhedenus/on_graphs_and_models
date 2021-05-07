@@ -206,9 +206,9 @@ Now open the Turtle file with a your favorite graph visualization tool. Finally 
 We see the things of our model `ex:Alice` and `ex:Bob` in the graph pane on the left. If you click on a node its properties are getting displayed. If you have trouble to achieve this result we are on the same page. How do you specify that `ex:Scientist` shall  become a property and is not rendered as a node in the graph pane? Does your tool even support any RDF file format? In theory this should be simple. There is no technical reason why any PG visualization tool should not be able to read RDF files. The problem is both simple and profound at the same time. The tool simply does not know that it should treat the predicates `ex:likes`and `ex:employedAs` differently. The RDF data does not render the information the tools needs.
 
 
-The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise.
+The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise:
 
-- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as subjects are regared as relations.
+- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as objects are regared as relations.
 
 - You can declare the behavior with a special vocabulary, e.g.:  
 
