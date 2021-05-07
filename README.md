@@ -83,16 +83,16 @@ Transferring this argumentation to the model image the tags become a special kin
 
 Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations -- or not.__
 
-Both solutions have their advantages and disadvantages. On the one hand the property-in-the-bubble solution is simpler in the sense that there are only two bubbles, on the other hand the bubbles show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
+Both solutions have their advantages and disadvantages. On the one hand, the property-in-the-bubble solution is simpler in the sense that there are only two bubbles. On the other hand, the bubbles show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_, but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
 
 
 
 ### Epistemic Structure
 
-The next example shall demonstrate that the Property Dichotomy conceptual issue and has nothing to do whether something is drawn as a box or an oval.
+The next example shall demonstrate that the Property Dichotomy is a conceptual issue and has nothing to do whether something is drawn as a box or an oval.
 Let's continue with the story about Alice and Bob. Both work as scientists. In fact, they met each other in the cryptography lab. We now add this information to the models.
 
-For the first variant we have to make a decision. Is 'employed as' a relation or a property? You can argue for both by saying that an employment is something that changes during your career and that it is something that depends on external circumstances, or by saying that is something that defines a person's status and its role in society. Another viewpoint is about the importance of this information is. Is the employment information of interest or is it supplementary?  Well, let's just _decide_ that is a property. We introduce the property `<employed as>` and assign it to the concept of a `<Scientist>`.
+For the first variant we have to make a decision. Is 'employed as' a relation or a property? You can argue for both by saying that an employment is something that changes during your career and that it is something that depends on external circumstances, or by saying that is something that defines a person's status and its role in society. Another viewpoint is about the importance of this information. Is the employment information of interest or is it only supplementary?  Well, let's just _decide_ that it is a property. We introduce the property `<employed as>` and assign it to the concept of a `<Scientist>`.
 
 <figure>
 <img src="image7.png" alt="Image 7" width="60%"/>
@@ -116,7 +116,7 @@ On the other hand the atomic graph increased considerably. It immediately shows 
 
 So far I used the fuzzy terms 'bubble' and 'arrow' to emphasize that creating (drawing) a model implies operations on a very abstract level.
 The level of abstraction behind that of modeling is that of graphs.
-Weh you create a model you create a graph.
+When you create a model you create a graph.
 But we have also seen that there are different variants of graphs. The choice of the __graph style__ has an important impact on the design, expressiveness and finally the epistemic structure of the model.
 
 
@@ -127,13 +127,13 @@ The graph style that makes a distinction between property and relation is common
 
 
 - If there is any standard in the PG world it is the exchange file format 
-[__GraphML__](http://graphml.graphdrawing.org). Fortunately, GraphML is a XML application that is specified by a XML Schema. GraphML has a very mathematical point of view and uses the terms 'node', 'edge' and 'attribute'. (Unfortunately, GraphML renders unnecessary technical limitations. For example, the node identifier is limited to the XML datatype `NMTOKEN` which prohibits you from using an URI as node identifier.)
+[__GraphML__](http://graphml.graphdrawing.org). Fortunately, GraphML is a XML application that is specified by a XML Schema. GraphML has a very mathematical point of view and uses the terms 'node', 'edge' and 'attribute'. 
 
 
 - [__Apache TinkerPop__](https://tinkerpop.apache.org/) is a Java graph API and framework that is supported by many PG products. It uses the terms 'vertex', 'edge' and 'property'.
 
 
-- The classical paper of Peter Chen on the [__Entity-Relationship Model (ER)__](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.526.369&rep=rep1&type=pdf) provides a "unified view of data". Obviously, this essay is highly influenced by the ER concept and its universal claims. The ER model uses the terms 'entity', 'relationship' and 'attribute' .
+- The classical paper of Peter Chen on the [__Entity-Relationship Model (ER)__](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.526.369&rep=rep1&type=pdf) provides a unified view of data. The ER model uses the terms 'entity', 'relationship' and 'attribute' .
 
 
 
@@ -172,11 +172,11 @@ The idea of RDF was to provide a way to attach properties to web resources. The 
 So far only bubbles had properties. Of course, properties can be attached to arrows, too. It is a widespread view that annotated edges is a special feature of PG, and that this is the main difference between PG and RDF. But RDF also allows you to add predicates to statements by using the reification vocabulary ([__RDF-star__](https://github.com/w3c/rdf-star) will greatly simplify this task). This issue has been left out because it is the intention of this essay to show that the difference between PG and AG is based on the Property Dichotomy and has nothing to do with a special technical intricateness.
 
 Another misconception is that PG and RDF are different because have been designed
-for very application domains. PG is used for standalone models while RDF is designed for the World Wide Web. This is true but the social history of PG and RDF lead to a very specific _technical_ problem, that could be solved easily.
-
-You cannot merge PGs while RDF allows you to integrate any data that is modeled with RDF. In fact, the true reason why you cannot merge two PGs is due to the usage of _local identifiers_. For example, if you have two GraphML files, they both use values like `n1` and `e2` for the `id` attribute of the XML elements. If both graphs contains nodes which are meant to be the same and we you want to merge them properly you must specify a mapping of the local identifiers. In contrast, RDF uses URIs as identifiers. No mapping is necessary and merging becomes _trivial_.
-There is no reason at all why you should not use URIs for properties or relations of a PG.
-
+for very application domains. PG is used for standalone models while RDF is designed for the World Wide Web. This is true but the social history of PG and RDF lead to a very specific _technical_ problems, that could be solved easily.
+You cannot merge PGs while RDF allows you to integrate any data that is modeled with RDF. In fact, the true reason why you cannot merge two PGs is due to the usage of _local identifiers_. For example, GraphML limits node identifiers to the XML datatype `NMTOKEN`. This prohibits you from using an URIs.
+If you have two GraphML files, they both use values like `"n1"` and `"e2"` for the `id` attribute of the XML elements. If both graphs contains nodes which are meant to be the same you must specify a mapping of the local identifiers to merge them properly. 
+In contrast, RDF is based on URIs. No mapping is necessary and merging becomes _trivial_.
+But there is no reason at all why you should not use URIs as identifiers in a PG.
 
 
 ### Mapping Property Graph and Atomic Graph
@@ -203,13 +203,10 @@ Now open the Turtle file with a your favorite graph visualization tool. Finally 
 <figcaption>Image 9.</figcaption>
 </figure>
 
-We see things of our model `ex:Alice` and `ex:Bob` in the graph pane on the left. If you click on a node you its properties are getting displayed. If you have trouble to achieve this result, we are on the same page.
+We see the things of our model `ex:Alice` and `ex:Bob` in the graph pane on the left. If you click on a node you its properties are getting displayed. If you have trouble to achieve this result, we are on the same page. How do you specify that `ex:Scientist` becomes a property and is not rendered as a node in the graph pane? Does your tool even support any RDF file format? In theory this should be simple. There is no technical reason why any PG visualization tool should not be able to read RDF files. The problem is both simple and profound at the same time. The tool simply does not know that it should treat the predicates `ex:likes`and `ex:employedAs` differently. The RDF data does not render the information the tools needs.
 
 
-How do you specify that `ex:Scientist` becomes a property and is not rendered as a node in the graph pane? Does your tool even support any RDF file format? In theory this should be simple. There is no technical reason why any PG visualization tool should not be able to read RDF files. The problem is both simple and profound at the same time. The tool simply does not know that it should treat the predicates `ex:likes`and `ex:employedAs` differently. The RDF data does not render the information the tools needs.
-
-
-The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more abstract or general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specfic mapping information must be added, either by the user or otherwise.
+The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise.
 
 - You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as subjects are regared as relations.
 
