@@ -4,11 +4,11 @@
 ## Abstract
 
 This is an essay about graphs and and models.
-The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The bridge is not a technical thing like [__RDF*__](https://github.com/w3c/rdf-star). The main difference between RDF and Property Graph lies deeper in basic decisions how to do modeling.
+The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The bridge is not a technical thing like RDF-star. The main difference between RDF and Property Graph lies deeper in basic decisions how to do modeling. Within this essay I will investigate the modeling styles and how they are connected to different graph styles. 
 
-With this essay I want to investigate modeling styles and how they are based on different graph styles.
+The essay opens a generalized view on graphs and modeling which in in turn is the basis for technical solutions that bridge RDF and and the Property Graph world.
 
-The conclusion are the foundation for a generalized view on graphs and modeling which in in turn is the basis for technical solutions that harmonize RDF and PGs. 
+
 
 ## Making a Model
 
@@ -37,6 +37,8 @@ Also the relationship is identified by a word 'likes'.
 
 So far everything seemed to be very natural. If we develop our model further we have to we make more design decisions. This is a crucial point because the next steps are not mandatory, but each step is a decision.
 
+
+
 ### Naming Things Unambiguously 
 
 One might ask: "I know two women with the name 'Alice'. Which one do you mean?". Of course, we could simply use the family name, but let us try to solve this problem once for all.
@@ -51,6 +53,8 @@ The name 'likes' is an English word but there is no reason why our model should 
 <img src="image3.png" alt="Image 3" width="35%"/>
 <figcaption>Image 3.</figcaption>
 </figure>
+
+
 
 ### The Property Dichotomy
 
@@ -82,6 +86,7 @@ Which way shall we go? You have to put the name somewhere, either _inside_ the b
 Both solutions have their advantages and disadvantages. The property-in-the-bubble solution is simpler in the sense that there only two bubbles but the bubbles then show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_ but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
 
 
+
 ### Epistemic Structure
 
 The next example shall demonstrate that the Property Dichotomy conceptual issue and has nothing to do whether something is drawn as a box or an oval.
@@ -106,12 +111,14 @@ The results are very different. In the property-relation-model the bubbles have 
 On the other hand the atomic graph increased considerably. It immediately shows you that there is a connection between Alice and Bob via their jobs as scientists. Although  this information is secondary it is as prominent as everything else. Within the atomic model everything has the same importance, it is a democratic network of things without any obvious epistemic structure. 
 
 
+
 ## Graph Styles
 
 So far I used the fuzzy terms 'bubble' and 'arrow' to emphasize that creating (drawing) a model implies operations on a very abstract level.
 The level of abstraction behind that of modeling is that of graphs.
 Weh you create a model you create a graph.
 But we have also seen that there are different variants of graphs. The choice of the __graph style__ has an important impact on the design, expressiveness and finally the epistemic structure of the model.
+
 
 
 ### Property Graph
@@ -141,9 +148,9 @@ This implies that the difference of a property and an attribute is due the sourc
 
 ### Atomic Graph
 
-The graph style that applies the property-outside-of-the-bubble solution of the Property Dichotomy has no common name. Because the nodes (and edges) of this graph have no internal structure I believe the name __Atomic Graph (AG)__ is suitable.
+The graph style that applies the property-outside-of-the-bubble solution of the Property Dichotomy has no common name. Because the nodes (and edges) of this graph have no internal structure, I believe the name __Atomic Graph (AG)__ is suitable.
 
-The most important (and maybe the sole) application of the AG style is [__Resource Description Framework (RDF)__](https://www.w3.org/RDF/). One of the great ideas of RDF is that the graph can be decomposed into molecules which in turn are decomposed into the three atoms 'subject','object' and 'predicate'. 
+The most important (and maybe the sole) application of the AG style is [__Resource Description Framework (RDF)__](https://www.w3.org/RDF/). One of the great ideas of RDF is that the graph can be decomposed into molecules which in turn are decomposed into three atoms called 'subject','object' and 'predicate'. 
 The 'predicate' is an URI which denotes a 'property' which is the same as a 'binary relation' ([RDF Primer](https://www.w3.org/TR/rdf11-concepts/#resources-and-statements)). 
 
 To understand why RDF was designed this way it's worth looking at its history. In a very early [working draft from 1997](https://www.w3.org/TR/WD-rdf-syntax-971002/) you read:
@@ -160,92 +167,58 @@ The idea of RDF was to provide a way to attach properties to web resources. The 
 
 
 
-### Relations with Properties
+### Misconceptions
 
-So far only bubbles had properties. Of course, properties can be attached to arrows. It is a widespread view that annotated edges is a special feature of PG.
-RDF also allows you to add predicates to statements by using the reification vocabulary. RDF* will greatly simplify this task. This issue has been left out because it is the intention of this essay to show that difference of PG and AG is based solely on the Property Dichotomy.
+So far only bubbles had properties. Of course, properties can be attached to arrows, too. It is a widespread view that annotated edges is a special feature of PG, and that this is the main difference between PG and RDF. But RDF also allows you to add predicates to statements by using the reification vocabulary ([__RDF-star__](https://github.com/w3c/rdf-star) will greatly simplify this task). This issue has been left out because it is the intention of this essay to show that the difference between PG and AG is based on the Property Dichotomy and has nothing to do with a special technical intricateness.
+
+Another misconception is that PG and RDF are different because have been designed
+for very application domains. PG is used for standalone models while RDF is designed for the World Wide Web. This is true but the social history of PG and RDF lead to a very specific _technical_ problem, that could be solved easily.
+
+You cannot merge PGs while RDF allows you to integrate any data that is modeled with RDF. In fact, the true reason why you cannot merge two PGs is due to the usage of _local identifiers_. For example, if you have two GraphML files, they both use values like `n1` and `e2` for the `id` attribute of the XML elements. If both graphs contains nodes which are meant to be the same and we you want to merge them properly you must specify a mapping of the local identifiers. In contrast, RDF uses URIs as identifiers. No mapping is necessary and merging becomes _trivial_.
+There is no reason at all why you should not use URIs for properties or relations of a PG.
 
 
 
-## Modeling Levels
+### Mapping Property Graph and Atomic Graph
 
-
-
-[Colin Atkinson, Matthias Gutheil and Kilian Kiko: _On the Relationship of Ontologies and Models_](https://cs.emis.de/LNI/Proceedings/Proceedings96/GI-Proceedings-96-3.pdf)
-
+Consider the following RDF data:
 
 ```
-class Person
-{
-   Name name;
-   Employment employment;
-}
+@prefix ex: <http://example.org/> .
+
+ex:Alice 
+  ex:name "Alice" ;
+  ex:employedAs ex:Scientist ;
+  ex:likes ex:Bob .
+
+ex:Bob
+  ex:name "Bob" ;
+  ex:employedAs ex:Scientist .
 ```
 
+Now open the Turtle file with a your favorite graph visualization tool. Finally the result shall look like this:
 
-## Mapping Property Graph and Atomic Graph
+<figure>
+<img src="image9.png" alt="Image 9" width="60%"/>
+<figcaption>Image 9.</figcaption>
+</figure>
 
-
-### The Information Graph
-
-
-
-An __Entity__ is a thing which can be distinctly identified.
-
-A __Relation__ is an association among entities.
-
-A __Property__ specifies information about an Entity or a Relation by which it is owned.
+We see things of our model `ex:Alice` and `ex:Bob` in the graph pane on the left. If you click on a node you its properties are getting displayed. If you have trouble to achieve this result, we are on the same page.
 
 
-### Entity
-
-The term 'entity' is heavily overloaded. It is used with different meanings in different contexts.
-and it would to circumlocutory to discuss them. In the end the basic meaning is that it is a thing we talk about. An Entity can be distinguished from other Entities. If we cannot not distinguish two things then we have to consider them as _the same_.
-
-It is important to understand that 'entity' means is 'a thing as a whole' with respect to our current model. When something is denoted as 'entity' this is not a assertion about its ontological status.
-It means that something is considered to be a whole thing within the current model.
-
-An Entity does not contain other Entities. As soon as you look into an entity and identify parts then you leave the current model and you enter new one. The entity disappears and new entities show up. 
-
-### Relation
-
-The term 'relation' is a stronger then 'association'. If you can bring two things into the same context they already become associated. It basically means grouping. A relation is a more specific form of association that is adds the notation of the relation kind, a direction and other relation properties like transitivity or symmetry. A relation exists only among entities.
+How do you specify that `ex:Scientist` becomes a property and is not rendered as a node in the graph pane? Does your tool even support any RDF file format? In theory this should be simple. There is no technical reason why any PG visualization tool should not be able to read RDF files. The problem is both simple and profound at the same time. The tool simply does not know that it should treat the predicates `ex:likes`and `ex:employedAs` differently. The RDF data does not render the information the tools needs.
 
 
-### Property
+The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more abstract or general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specfic mapping information must be added, either by the user or otherwise.
 
+- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as subjects are regared as relations.
 
+- You can declare the behavior with a special vocabulary, e.g.:  
 
-A resource is something that is identified by an URI and vice versa if something can be identified by URI it is a resource.
+```
+ex:name       a pg:Property .
+ex:employedAs a pg:Property .
+ex:likes      a pg:Relation .
+```
 
-Changing the URI means changing the identity. So the URI is a essential property of an entity. The URI is the only essential property, everything else is accidental.
-
-Resource is a technical term, entity is something conceptual.
-
-An entity is a resource but not every resource is an entity. 
-
-
-
-
-Properties have no existence on their own, their existence is bound the owning entity.
-
-Properties contain the information you have to copy when you create a clone of an entity.
-
-
-If an entity is destroyed its properties are also destroyed. The relations are also destroyed but not the related entities.
-
-
-
-
-
-Domain Model == Types + Instances
-
-
-
-### Simple versus Complex Properties
-
-XML Schema analogy
-
-
-
-
+The final result is that there cannot be a trivial solution to bridge Property Graphs and RDF because it must overcome the Property Dichotomy.
