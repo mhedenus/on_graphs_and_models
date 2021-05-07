@@ -4,7 +4,7 @@
 ## Abstract
 
 This is an essay about graphs and and models.
-The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The bridge is not a technical thing like RDF-star. The main difference between RDF and Property Graph lies deeper in basic decisions how to do modeling. Within this essay I will investigate the modeling styles and how they are connected to different graph styles. 
+The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The main difference between RDF and Property Graph lies deep in basic decisions how to do modeling. Within this essay I will investigate the modeling styles and how they are connected to different graph styles. 
 
 The essay opens a generalized view on graphs and modeling which in in turn is the basis for technical solutions that bridge RDF and and the Property Graph world.
 
