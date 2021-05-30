@@ -213,9 +213,9 @@ The real reason lies deeper. There is a conceptual mismatch between the PG tool 
 - You can declare the behavior with a special vocabulary, e.g.:  
 
 ```
-ex:name       a pg:Property .
-ex:employedAs a pg:Property .
-ex:likes      a pg:Relation .
+ex:name       a pg:PropertyType .
+ex:employedAs a pg:PropertyType .
+ex:likes      a pg:RelationType .
 ```
 
 The final result is that there cannot be a trivial solution to bridge Property Graphs and RDF because it must overcome the Property Dichotomy.
