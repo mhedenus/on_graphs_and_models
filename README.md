@@ -4,7 +4,7 @@
 ## Abstract
 
 This is an essay about graphs and and models.
-The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The main difference between RDF and Property Graph lies deep in basic decisions how to do modeling. Within this essay I will investigate the modeling styles and how they are connected to different graph styles. 
+The main question is how to bring together __Resource Description Framework__ and __Property Graph__. The main difference between RDF and Property Graph lies deeply in basic decisions how to do modeling. Within this essay I will investigate the modeling styles and how they are connected to different graph styles. 
 
 This essay opens a generalized view on graphs and modeling which in in turn can be the basis for technical solutions that bridge RDF and and the Property Graph world.
 
@@ -30,7 +30,7 @@ When we gossip about Alice and Bob it might also be of interest that Bob is a ta
 </figure>
  
 
-The new model is more abstract than the first. Can we continue with this abstracting process? If we look closely at the second image we see that the model consists of specific __elements__: There are bubbles, an arrow and words. The bubbles and the arrow are very different . 
+The new model is more abstract than the first. Can we continue with this abstracting process? If we look closely at the second image we see that the model consists of specific elements: There are bubbles, an arrow and words. The bubbles and the arrow are very different . 
 Without knowing it we have already made a design decision: we are distinguishing between things and their relationship. Things are represented by bubbles and relationships are represented by arrows. To be able to recognize who we are talking about we use the individuals' names.
 The bubbles represent things which are _identified_ by a name.
 Also the relationship is identified by a word 'likes'.
@@ -41,9 +41,9 @@ So far everything seemed to be very natural. If we develop our model further we 
 
 ### Naming Things Unambiguously 
 
-One might ask: "I know two women with the name 'Alice'. Which one do you mean?". Of course, we could simply use the family name, but let us try to solve this problem once for all.
+One might ask: "I know two women with the name 'Alice'. Which one do you mean?" Of course, we could simply use the family name, but let us try to solve this problem once for all.
 
-Creating an unique name is a very hard problem. You cannot prevent anybody of using the same name for something different. The only solution is to have a system that provides the technical and organizational means allows you to create, register and look up names globally. [__Uniform Resource Identifier (URI)__](https://tools.ietf.org/html/rfc3986) allow you to do exactly this.
+Creating an unique name is a very hard problem. You cannot prevent anybody of using the same name for something different. The only solution is to have a system that provides the technical and organizational means for creating, registering and looking up names globally. [__Uniform Resource Identifier (URI)__](https://tools.ietf.org/html/rfc3986) allow you to do exactly this.
 
 Let's create URIs for Alice and Bob. The technical Details of these URIs are not of interest here, therefore I simply write `<Alice>` and `<Bob>`. Anything in angle brackets is meant to be an URI.
 
@@ -81,7 +81,7 @@ Transferring this argumentation to the model image the tags become a special kin
 <figcaption>Image 6.</figcaption>
 </figure>
 
-Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations -- or not.__
+Which way shall we go? You have to put the name somewhere, either _inside_ the bubble or _outside_. I call this problem the __Property Dichotomy: either distinguishing between properties and relations - or not.__
 
 Both solutions have their advantages and disadvantages. On the one hand, the property-in-the-bubble solution is simpler in the sense that there are only two bubbles. On the other hand, the bubbles show an _inner structure_. The property-outside-of-the-bubble solution has the advantage that the bubbles are  _atomic_, but it is more complex if you regard the number of arrows and bubbles. It is also more abstract because _the distinction between property and relationship has been neutralized_.
 
@@ -172,7 +172,7 @@ The idea of RDF was to provide a way to attach properties to web resources. The 
 So far only bubbles had properties. Of course, properties can be attached to arrows, too. It is a widespread view that annotated edges is a special feature of PG, and that this is the main difference between PG and RDF. But RDF also allows you to add predicates to statements by using the reification vocabulary ([__RDF-star__](https://github.com/w3c/rdf-star) will greatly simplify this task). This issue has been left out because it is the intention of this essay to show that the difference between PG and AG is based on the Property Dichotomy and has nothing to do with a special technical intricateness.
 
 Another misconception is that PG and RDF are different because they have been designed
-for very different application domains. PG is used for standalone models while RDF is designed for the World Wide Web. Well, this is true but the social history of PG and RDF lead to very specific _technical_ problems, that could be solved easily.
+for very different application domains. PG is used for standalone models while RDF is designed for the World Wide Web. Well, this might be true but the social history of PG and RDF lead to very specific _technical_ problems, that could be solved easily.
 You cannot merge PGs while RDF allows you to integrate any data that is modeled with RDF. In fact, the true reason why you cannot merge two PGs is due to the usage of _local identifiers_. For example, GraphML limits node identifiers to the XML datatype `NMTOKEN`. This prohibits you from using an URIs.
 If you have two GraphML files, they both use values like `"n1"` and `"e2"` for the `id` attribute of the XML elements. If both graphs contains nodes which are meant to be the same you must specify a mapping of the local identifiers to merge them properly. 
 In contrast, RDF is based on URIs. No mapping is necessary and merging becomes _trivial_.
@@ -206,11 +206,11 @@ Now open the Turtle file with a your favorite graph visualization tool. Finally 
 We see the things of our model `ex:Alice` and `ex:Bob` in the graph pane on the left. If you click on a node its properties are getting displayed. If you have trouble to achieve this result we are on the same page. How do you specify that `ex:Scientist` shall  become a property and is not rendered as a node in the graph pane? Does your tool even support any RDF file format? In theory this should be simple. There is no technical reason why any PG visualization tool should not be able to read RDF files. The problem is both simple and profound at the same time. The tool simply does not know that it should treat the predicates `ex:likes`and `ex:employedAs` differently. The RDF data does not render the information the tools needs.
 
 
-The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise:
+The real reason lies deeper. There is a conceptual mismatch between the PG tool and the AG data due to the Property Dichotomy. It is easy to see that the problem is asymmetric. The AG style is more general because it uses _less_ modeling elements. So you always can transform a PG into a AG - but not vice versa. To do so, specific mapping information must be added, either by the user or otherwise. For example,
 
-- You can define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as objects are regarded as relations.
+- you could define fixed rules, e.g. RDF literals and  `rdf:type` values are properties but all other statements having URIs as objects are regarded as relations.
 
-- You can declare the behavior with a special vocabulary, e.g.:  
+- or you could declare the behavior with a special vocabulary, like:  
 
 ```
 ex:name       a pg:PropertyType .
