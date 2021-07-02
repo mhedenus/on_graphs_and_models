@@ -45,7 +45,7 @@ One might ask: "I know two women with the name 'Alice'. Which one do you mean?" 
 
 Creating an unique name is a very hard problem. You cannot prevent anybody of using the same name for something different. The only solution is to have a system that provides the technical and organizational means for creating, registering and looking up names globally. [__Uniform Resource Identifier (URI)__](https://tools.ietf.org/html/rfc3986) allow you to do exactly this.
 
-Let's create URIs for Alice and Bob. The technical Details of these URIs are not of interest here, therefore I simply write `<Alice>` and `<Bob>`. Anything in angle brackets is meant to be an URI.
+Let's create URIs for Alice and Bob. The technical details of these URIs are not of interest here, therefore I simply write `<Alice>` and `<Bob>`. Anything in angle brackets is meant to be an URI.
 
 The name 'likes' is an English word but there is no reason why our model should not be understood by everyone in the world. So we also introduce an URI for the relationship `<likes>`. Now the model looks a bit more technical.
 
